@@ -1,13 +1,22 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :session_token, :username
+  attr_accessible :email, :password, :password_confirmation, :session_token, :username
 
   before_validation do
     self.session_token || reset_session_token
   end
 
+	validate :password_and_confirmation_match
+
+	def password_and_confirmation_match
+		unless self.password == self.password_confirmation
+			self.errors[:password] << "doesn't match the confirmation form"
+		end
+	end
+
   validates :email, presence: true
+	validates :password, length: {minimum: 6, allow_null: true}
   validates :password_digest, presence: true
   validates :session_token, presence: true
   validates :username, presence: true
