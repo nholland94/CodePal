@@ -6,16 +6,16 @@
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
 	<label for="user-username">Username:</label><br>
-	<input type="text" name="user[username]" value="<%= @user.username %>" id="user-username" placeholder="username">
+	<input type="text" name="user[username]" value="<%= @user.username %>" id="user-username" placeholder="username"><br>
 
 	<label for="user-email">Email:</label><br>
-	<input type="email" name="user[email]" value="<%= @user.email %>" id="user-email" placeholder="email">
+	<input type="email" name="user[email]" value="<%= @user.email %>" id="user-email" placeholder="email"><br>
 
 	<label for="user-password">Password:</label><br>
-	<input type="password" name="user[password]" id="user-password" placeholder="password">
+	<input type="password" name="user[password]" id="user-password" placeholder="password"><br>
 
 	<label for="user-password-confirmation">Confirm Password:</label><br>
-	<input type="password" name="user[password_confirmation]" id="user-password-confirmation" placeholder="re-type password">
+	<input type="password" name="user[password_confirmation]" id="user-password-confirmation" placeholder="re-type password"><br>
 	<br>
 	<label type="submit" value="Create Account">
 </form>
