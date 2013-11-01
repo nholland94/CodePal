@@ -1,0 +1,4 @@
+<h1><%= @project.title %></h1><br><br>
+Description: <%= @project.description %><br>
+<% user = @project.creator %>
+Creator: <%= link_to user.username, user_url(user.id) %>

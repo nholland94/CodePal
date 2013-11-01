@@ -1,5 +1,6 @@
-<form action="<%= user_index_url %>" method="post">
-	<% edit = edit || false %>
+<% edit = edit || false %>
+<% url = edit ? user_url(@user.id) || user_index_url %>
+<form action="<%= url %>" method="post">	
 	<% if edit %>
 	<input type="hidden" name="_method" value="PUT">
 	<% end %>

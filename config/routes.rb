@@ -9,6 +9,8 @@ CodePal::Application.routes.draw do
 		end
 	end
 
+	root to: 'projects#index'
+
 	get '/login', to: 'session#new', as: 'login'
 	post '/login', to: 'session#create'
 	delete '/logout', to: 'session#destroy', as: 'logout'
