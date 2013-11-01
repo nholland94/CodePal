@@ -1,8 +1,10 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :session_token, :username
 
   before_validation do
-    self.session_token = self.session_token || self.class.generate_session_token
+    self.session_token || reset_session_token
   end
 
   validates :email, presence: true
@@ -29,6 +31,19 @@ class User < ActiveRecord::Base
   end
 
   def password=(raw_pass)
+    @password = raw_pass
+    self.password_digest = BCrypt::Password.create(raw_pass)
+  end
 
+  def password
+    @password
+  end
+
+  def is_password?(raw_pass)
+    BCrypt::Password.new(self.password_digest).is_password?(raw_pass)
+  end
+
+  def reset_session_token
+    self.session_token = User.generate_session_token
   end
 end
