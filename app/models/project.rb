@@ -12,16 +12,16 @@ class Project < ActiveRecord::Base
     primary_key: :id
   )
 
-	has_many(
-		:project_memberships,
-		class_name: "ProjectMember",
-		foreign_key: :project_id,
-		primary_key: :id
-	)
+  has_many(
+    :project_memberships,
+    class_name: "ProjectMember",
+    foreign_key: :project_id,
+    primary_key: :id
+  )
 
-	has_many :members, through: :project_memberships, source: :user
+  has_many :members, through: :project_memberships, source: :user
 
-	def all_members
-		self.members + self.creator
-	end
+  def all_members
+    self.members + self.creator
+  end
 end

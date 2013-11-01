@@ -1,55 +1,55 @@
 class ProjectsController < ApplicationController
-	def index
-		@projects = Project.all
+  def index
+    @projects = Project.all
 
-		render :index
-	end
+    render :index
+  end
 
-	def new
-		@project = Project.new
+  def new
+    @project = Project.new
 
-		render :new
-	end
+    render :new
+  end
 
-	def create
-		@project = Project.new(params[:project])
+  def create
+    @project = Project.new(params[:project])
 
-		@project.creator_id = current_user.id
+    @project.creator_id = current_user.id
 
-		if @project.save
-			redirect_to project_url(@project.id)
-		else
-			add_flash(:errors, @project.errors.full_messages)
-			redirect_to new_project_url
-		end
-	end
+    if @project.save
+      redirect_to project_url(@project.id)
+    else
+      add_flash(:errors, @project.errors.full_messages)
+      redirect_to new_project_url
+    end
+  end
 
-	def show
-		@project = Project.find(params[:id])
+  def show
+    @project = Project.find(params[:id])
 
-		render :show
-	end
+    render :show
+  end
 
-	def edit
-		@project = Project.find(params[:id])
+  def edit
+    @project = Project.find(params[:id])
 
-		render :edit
-	end
+    render :edit
+  end
 
-	def update
-		@project = Project.find(params[:id])
+  def update
+    @project = Project.find(params[:id])
 
-		if @project.update_attributes(params[:project])
-			redirect_to project_url(@project.id)
-		else
-			add_flash(:errors, @project.errors.full_messages)
-			redirect_to edit_user_url
-		end
-	end
+    if @project.update_attributes(params[:project])
+      redirect_to project_url(@project.id)
+    else
+      add_flash(:errors, @project.errors.full_messages)
+      redirect_to edit_user_url
+    end
+  end
 
-	def destroy
-		@project = Project.find(params[:id])
-		@project.destroy
-		redirect_to root_url
-	end
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to root_url
+  end
 end

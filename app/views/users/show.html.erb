@@ -4,6 +4,6 @@ Email: <%= @user.email %><br>
 Created Projects:<br>
 <ul>
 <% @user.created_projects.each do |project| %>
-	<%= link_to project.title, project_url(project.id) %>
+  <%= link_to project.title, project_url(project.id) %>
 <% end %>
 </ul>

@@ -7,16 +7,16 @@ class User < ActiveRecord::Base
     self.session_token || reset_session_token
   end
 
-	validate :password_and_confirmation_match
+  validate :password_and_confirmation_match
 
-	def password_and_confirmation_match
-		unless self.password == self.password_confirmation
-			self.errors[:password] << "doesn't match the confirmation form"
-		end
-	end
+  def password_and_confirmation_match
+    unless self.password == self.password_confirmation
+      self.errors[:password] << "doesn't match the confirmation form"
+    end
+  end
 
   validates :email, presence: true
-	validates :password, length: {minimum: 6, allow_null: true}
+  validates :password, length: {minimum: 6, allow_null: true}
   validates :password_digest, presence: true
   validates :session_token, presence: true
   validates :username, presence: true
