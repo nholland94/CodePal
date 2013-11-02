@@ -1,6 +1,4 @@
-<% edit = edit || false %>
-<% url = edit ? project_url(@project.id) || projects_url %>
-<form action="<%= projects_url %>" method="post">
+<form action="<%= url %>" method="post">
   <% if edit %>
   <input type="hidden" name="_method" value="PUT">
   <% end %>
@@ -10,7 +8,7 @@
   <input type="text" name="project[title]" value="<%= @project.title %>" id="project-title" placeholder="title"><br>
 
   <label for="project-description">Description:</label><br>
-  <textarea cols=50 rows=10 name="project[description]" value="<%= @project.description %>" id="project-description" placeholder="description"><br>
+  <textarea cols=50 rows=10 name="project[description]" id="project-description" placeholder="description"><%= @project.description %></textarea><br>
 
-  <input type="submit" value="Create a Project">
+  <input type="submit" value="<%= button_text %>">
 </form>
