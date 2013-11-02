@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   validates :email, presence: true
-  validates :password, length: {minimum: 6, allow_null: true}
+  validates :password, length: {minimum: 6, allow_nil: true}
   validates :password_digest, presence: true
   validates :session_token, presence: true
   validates :username, presence: true
@@ -39,6 +39,14 @@ class User < ActiveRecord::Base
     return SecureRandom::urlsafe_base64
   end
 
+  def password_confirmation=(pass)
+    @password_confirmation = pass
+  end
+
+  def password_confirmation
+    @password_confirmation
+  end
+
   def password=(raw_pass)
     @password = raw_pass
     self.password_digest = BCrypt::Password.create(raw_pass)
@@ -52,7 +60,8 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(raw_pass)
   end
 
-  def reset_session_token
+  def reset_session_token!
     self.session_token = User.generate_session_token
+    self.save!
   end
 end

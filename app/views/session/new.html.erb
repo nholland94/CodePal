@@ -1,9 +1,9 @@
 <form action="<%= login_url %>" method="post">
   <label for="login-username">Username:</label><br>
-  <input type="text" name="user[username]" value="<%= @user.username %>" id="login-username" placeholder="username"><br>
+  <input type="text" name="user[username]" id="login-username" placeholder="username"><br>
 
   <label for="login-passowrd">Password:</label><br>
-  <input type="passowrd" name="user[password]" id="login-password" placeholder="username"><br>
+  <input type="password" name="user[password]" id="login-password" placeholder="username"><br>
 
   <input type="submit" value="Login">
 </form>

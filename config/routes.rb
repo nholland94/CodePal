@@ -1,5 +1,5 @@
 CodePal::Application.routes.draw do
-  resources :user
+  resources :users
   resources :projects do
     member do
       get 'members/new', to: 'project_members#new', as: 'new_members'
@@ -7,7 +7,7 @@ CodePal::Application.routes.draw do
       # resources :project_members, only: [:index, :new]
     end
 
-    resources :user, only: [] do
+    resources :users, only: [] do
       member do
         post 'membership', to: 'project_members#create', as: 'members'
         delete 'membership', to: 'project_members#destroy', as: 'members'

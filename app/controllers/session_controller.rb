@@ -8,6 +8,7 @@ class SessionController < ApplicationController
 
     if @user.is_password?(params[:user][:password])
       login!(@user)
+      redirect_to root_url
     else
       add_flash(:errors, @user.errors.full_messages)
       redirect_to login_url

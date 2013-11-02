@@ -1,5 +1,3 @@
-<% edit = edit || false %>
-<% url = edit ? user_url(@user.id) || user_index_url %>
 <form action="<%= url %>" method="post">  
   <% if edit %>
   <input type="hidden" name="_method" value="PUT">
@@ -18,5 +16,5 @@
   <label for="user-password-confirmation">Confirm Password:</label><br>
   <input type="password" name="user[password_confirmation]" id="user-password-confirmation" placeholder="re-type password"><br>
   <br>
-  <label type="submit" value="Create Account">
+  <input type="submit" value="Create Account">
 </form>
