@@ -1,0 +1,36 @@
+div.workspace {
+  position: relative;
+  height: 100%;
+  background-color: #2F3129;
+}
+
+div.editor {
+  width: 50%;
+  height: 50%;
+  font-size: 16px;
+}
+
+#html-box {
+  float: left;
+}
+
+#css-box {
+  float: right;
+}
+
+div.divider {
+  background-color: #AA9;
+}
+
+.selections {
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+iframe {
+  width: 100%;
+  height: 45%;
+  background-color: white;
+}

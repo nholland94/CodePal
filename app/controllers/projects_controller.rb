@@ -52,4 +52,10 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to root_url
   end
+
+  def workspace
+    # create projectfiles instance variables
+
+    render :workspace
+  end
 end

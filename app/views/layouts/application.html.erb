@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="container">
 <% if logged_in? %>
   <ul>
     <li>
@@ -36,5 +36,6 @@
 
 <%= yield %>
 
+  </div>
 </body>
 </html>

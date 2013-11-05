@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require ace
+//= require theme-monokai
+//= require mode-html
 //= require_tree .

@@ -2,6 +2,7 @@ CodePal::Application.routes.draw do
   resources :users
   resources :projects do
     member do
+      get 'workspace', to: 'projects#workspace', as: 'workspace'
       get 'members/new', to: 'project_members#new', as: 'new_members'
       get 'members', to: 'project_members#index', as: 'members'
       post 'members', to: 'project_members#create', as: 'members'
