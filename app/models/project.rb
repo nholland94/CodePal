@@ -22,6 +22,6 @@ class Project < ActiveRecord::Base
   has_many :members, through: :project_memberships, source: :user
 
   def all_members
-    self.members + self.creator
+    [self.creator] + self.members
   end
 end

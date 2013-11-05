@@ -1,27 +1,32 @@
 class ProjectMembersController < ApplicationController
   def index
-    @members = Project.find(params[:id]).members
+    @members = Project.find(params[:id]).all_members
     
     render :index
   end
 
   def new
-    @current_members = Project.all_members
-    @potential_members = User.where.not(user_id: @current_members)
+    project = Project.find(params[:id])
+    @users = User.where('id != ?', project.creator_id)
+    @member_ids = project.members.map { |member| member.id }
 
     render :new
   end
 
   def create
-    @member = ProjectMember.new(project_id: params[:project_id],
-                                user_id: params[:id])
+    @member_ids = Project.find(params[:id]).members.map { |member| member.id }
 
-    if @member.save
-      redirect_to members_index_project_url(params[:id])
-    else
-      add_flash(:errors, @member.errors.full_messages
-      redirect_to new_members_project_url(params[:id])
+    params[:member].each do |pair|
+      if pair.last == "on" && !@member_ids.include?(pair.first.to_i)
+        member = ProjectMember.new(project_id: params[:id],
+                                   user_id: pair.first.to_i)
+        unless member.save
+          add_flash(:errors, member.errors.full_messages)
+        end
+      end
     end
+    
+    redirect_to members_project_url(params[:id])
   end
 
   def destroy

@@ -1,0 +1,36 @@
+<h1>Add Members</h1>
+
+<form action="<%= members_project_url(params[:id]) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <% @first_row = true %>
+  <% @users.each_with_index do |user, index| %>
+    <% if index % 3 == 0 %>
+      <% unless @first_row %>
+        </div>
+      <% end %>
+
+      <div class="row">
+      <% @first_row = false %>
+    <% end %>
+    
+    <div class="member-box">
+      <div class="member-checkbox">
+        <input type="checkbox" name="member[<%= user.id %>]"
+          <% if @member_ids.include?(user.id) %>
+            checked
+          <% end %>
+        ><%= user.username %>
+      </div>
+
+      <div class="member-picture">
+        Put member picture here
+      </div>
+    </div>
+  <% end %>
+  <% unless @users.empty? %>
+    </div> 
+  <% end %>
+
+  <input type="submit" value="Add Members">
+</form>

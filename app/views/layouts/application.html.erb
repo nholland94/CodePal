@@ -28,6 +28,12 @@
   </ul>
 <% end %>
 
+<% flash.each do |category| %>
+  <% category.each do |message| %>
+    <span class="flash-<%= category %>"><%= message %></span>
+  <% end %>
+<% end %>
+
 <%= yield %>
 
 </body>

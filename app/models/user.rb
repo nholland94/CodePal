@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :session_token, :username
 
   before_validation do
-    self.session_token || reset_session_token
+    self.session_token || reset_session_token!
   end
 
   validate :password_and_confirmation_match
