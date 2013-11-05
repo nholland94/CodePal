@@ -34,6 +34,6 @@ class ProjectMembersController < ApplicationController
                                                                 params[:id])
 
     @membership.destroy
-    redirect_to members_index_project_url(params[:project_id])
+    redirect_to members_project_url(params[:project_id])
   end
 end
