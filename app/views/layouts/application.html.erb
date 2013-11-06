@@ -8,25 +8,7 @@
 </head>
 <body>
 <div class="container">
-<% if logged_in? %>
-  <ul>
-    <li>
-      <%= current_user.username %>
-    </li>
-    <li>
-      <%= button_to "Logout", logout_url , method: "delete" %>
-    </li>
-  </ul>
-<% else %>
-  <ul>
-    <li>
-      <%= button_to "Sign Up", new_user_url , method: "get" %>
-    </li>
-    <li>
-      <%= button_to "Login", login_url , method: "get" %>
-    </li>
-  </ul>
-<% end %>
+<%= render "layouts/navbar" %>
 
 <% flash.each do |category| %>
   <% category.each do |message| %>
@@ -36,6 +18,6 @@
 
 <%= yield %>
 
-  </div>
+</div>
 </body>
 </html>

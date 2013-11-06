@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
+gem 'backbone-on-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'faker'
 gem 'figaro'

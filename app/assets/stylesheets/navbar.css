@@ -1,0 +1,39 @@
+nav {
+  height: 50px;
+  width: 100%;
+  background: black;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+nav ul.left {
+  float: left
+}
+
+nav ul.right {
+  float: right;
+}
+
+nav ul li {
+  display: inline-block;
+  height: 100%;
+  padding: .2em 1em;
+  border: 1px solid red;
+}
+
+nav ul li input {
+  background: #33F;
+  color: white;
+  padding: .2em 1em;
+  font-size: 45;
+  margin-top: 5%;
+}
+
+nav ul li input:hover {
+  background: #66B;
+  color: white;
+}
