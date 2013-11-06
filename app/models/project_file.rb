@@ -4,4 +4,6 @@ class ProjectFile < ActiveRecord::Base
   validates :body, presence: true
   validates :project_id, presence: true
   validates :type, presence: true
+
+  belongs_to :project
 end

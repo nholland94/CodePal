@@ -48,4 +48,10 @@ $(document).ready(function() {
 
   htmlBox.getSession().on("change", checkAutoFill);
   cssBox.getSession().on("change", checkAutoFill); 
+
+  //add save to navbar
+  //will be replaced with some backbonr/ajax later
+
+
+  //CodePal.Navbar.addOption();
 });

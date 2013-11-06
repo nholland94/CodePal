@@ -5,6 +5,8 @@ class Project < ActiveRecord::Base
   validates :description, presence: true
   validates :title, presence: true
 
+  has_many :project_files
+
   belongs_to(
     :creator,
     class_name: "User",

@@ -17,7 +17,14 @@ CodePal::Application.routes.draw do
   end
 
   namespace :api do
-    resources :projects, only: [:show]
+    resources :projects, only: [:show] do
+      resources :project_files, only: [:index] do
+        collection do
+          get 'save', to: 'project_files#save', as: 'save'
+        end
+      end
+    end
+
     resources :user, only: [:show] do
       resources :projects, only: [:index]
     end
