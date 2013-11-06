@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> <html>
 <head>
   <title>CodePal</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -15,6 +14,8 @@
     <span class="flash-<%= category %>"><%= message %></span>
   <% end %>
 <% end %>
+
+<div class="alerts"></div>
 
 <%= yield %>
 

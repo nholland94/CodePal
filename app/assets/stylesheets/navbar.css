@@ -29,8 +29,8 @@ nav ul li input {
   background: #33F;
   color: white;
   padding: .2em 1em;
-  font-size: 45;
-  margin-top: 5%;
+  font-size: 14pt;
+  height: 35px;
 }
 
 nav ul li input:hover {

@@ -20,7 +20,7 @@ CodePal::Application.routes.draw do
     resources :projects, only: [:show] do
       resources :project_files, only: [:index] do
         collection do
-          get 'save', to: 'project_files#save', as: 'save'
+          post 'save', to: 'project_files#save', as: 'save'
         end
       end
     end

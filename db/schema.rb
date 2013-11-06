@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031062906) do
+ActiveRecord::Schema.define(:version => 20131106221523) do
 
   create_table "project_files", :force => true do |t|
-    t.string   "type"
     t.text     "body"
     t.integer  "project_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "file_type"
   end
 
   add_index "project_files", ["project_id"], :name => "index_project_files_on_project_id"

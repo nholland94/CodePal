@@ -22,8 +22,24 @@ class Project < ActiveRecord::Base
   )
 
   has_many :members, through: :project_memberships, source: :user
+  
+  after_create do
+    ['html', 'css'].each do |type|
+      ProjectFile.create!(file_type: type, body: "", project_id: self.id)
+    end
+  end
 
   def all_members
     [self.creator] + self.members
+  end
+
+  def method_missing(method, *args, &block)
+    if method[-5..-1] == "_file"
+      file_type = method[0..-6]
+      file = self.project_files.where(file_type: file_type)
+      return file
+    else
+      super
+    end
   end
 end
