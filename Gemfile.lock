@@ -139,5 +139,6 @@ DEPENDENCIES
   pg
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
+  sprockets
   sqlite3
   uglifier (>= 1.0.3)

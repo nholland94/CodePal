@@ -1,3 +1,4 @@
+###
 window.CodePal =
   Models: {}
   Collections: {}
@@ -7,3 +8,4 @@ window.CodePal =
 
 $(document).ready ->
   CodePal.initialize()
+###
