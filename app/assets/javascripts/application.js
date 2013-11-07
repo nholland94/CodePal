@@ -20,10 +20,5 @@
 //= require underscore
 //= require backbone
 //= require code_pal
-//= require_tree ../templates
-//= require_tree ./models
-//= require_tree ./collections
-//= require_tree ./views
-//= require_tree ./routers
 //= require_tree ./workspace
 //= require_tree .
