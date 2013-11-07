@@ -1,0 +1,18 @@
+<div class="<%= direction %> editor-container" id="<%= type %>-container">
+  <div class="editor-options">
+    <% options.each do |option| %>
+      <button type="button"><%= option %></button>
+    <% end %>
+  </div>
+  <div class="editor-header" data-type="<%= type %>">
+    <button type="button" class="gear-button">
+      <%= image_tag "gear.png", class: "gear" %>
+    </button>
+
+    <span><%= type.upcase %></span>
+
+    <input class="editor-checkbox" type="checkbox" checked>
+  </div>
+
+  <div class="editor" id="<%= type %>-box"></div>
+</div>

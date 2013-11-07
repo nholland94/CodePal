@@ -1,0 +1,27 @@
+div.alerts {
+  width: 50%;
+  height: 50px;
+  position: absolute;
+  top: 50px;
+  left: 25%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+div.alerts div {
+  color: black;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 11;
+  font-size: 24pt;
+  border-radius: 15px;
+}
+
+div.alerts div.success {
+  background-color: green;
+}
+
+div.alerts div.error {
+  background-color: red;
+}

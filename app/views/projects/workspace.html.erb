@@ -1,16 +1,21 @@
 <div class="workspace">
   <div id="data" data-project-id="<%= params[:id] %>"></div>
-  <div class="editor" id="html-box"></div>
-  <div class="editor" id="css-box"></div>
-  <br>
+
+  <%= render "editor", direction: "left", type: "html", options: ["html", "haml"] %>
+
+  <%= render "editor", direction: "right", type: "css", options: ["css", "sass"] %>
 
   <div class="divider">
     <div class="selections">
       <button type="button">Submit</button>
-      <input type="checkbox" id="autorun">Auto Submit?
+      <input type="checkbox" id="autorun" checked>Auto Submit?
     </div>
   </div>
 
   <iframe src="javascript:false;" name="code-render" scrolling="true">
   </iframe>
 </div>
+
+<script>
+  CodePal.Workspace.start(true);
+</script>

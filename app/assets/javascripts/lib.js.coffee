@@ -4,10 +4,10 @@
   Lib = CodePal.Lib = {}
 
   Lib.sendAlert = (message, type) ->
-    alertText = $('<p></p>')
-    alertText.attr("type", type)
+    alertText = $('<div></div>')
+    alertText.attr("class", type)
     alertText.html(message)
-    alertText.css({opacity: 0})
+    alertText.css({display: "none"})
     $('div.alerts').append(alertText)
     alertText.fadeIn(
       600

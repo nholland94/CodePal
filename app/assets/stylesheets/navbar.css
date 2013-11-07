@@ -1,7 +1,11 @@
 nav {
   height: 50px;
   width: 100%;
-  background: black;
+  background: #143069;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 5px solid black;
 }
 
 nav ul {
@@ -21,12 +25,13 @@ nav ul.right {
 nav ul li {
   display: inline-block;
   height: 100%;
-  padding: .2em 1em;
-  border: 1px solid red;
+  margin-top: 7px;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 nav ul li input {
-  background: #33F;
+  background: #021014;
   color: white;
   padding: .2em 1em;
   font-size: 14pt;

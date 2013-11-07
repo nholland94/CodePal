@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jQueryRotate
 //= require underscore
 //= require ace
 //= require theme-monokai
@@ -24,4 +25,5 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
+//= require_tree ./workspace
 //= require_tree .
