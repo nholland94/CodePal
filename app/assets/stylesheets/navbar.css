@@ -1,11 +1,11 @@
 nav {
   height: 50px;
   width: 100%;
-  background: #143069;
+  background: black;
   border-top: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid black; 
 }
 
 nav ul {
@@ -31,14 +31,27 @@ nav ul li {
 }
 
 nav ul li input {
-  background: #021014;
-  color: white;
-  padding: .2em 1em;
-  font-size: 14pt;
-  height: 35px;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font: 14px/100% Arial, Helvetica, sans-serif;
+  padding: .5em 2em .55em;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  -webkit-border-radius: .5em;
+  -mox-border-radius: .5em;
+  border-radius: .5em;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2)
+  box-shadow: 0 1px 2px rba(0,0,0,.2); 
 }
 
 nav ul li input:hover {
-  background: #66B;
-  color: white;
+  text-decoration: none; 
+}
+
+nav ul li input:active {
+  position: relative;
+  top: 1px;
 }

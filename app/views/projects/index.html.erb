@@ -1,7 +1,26 @@
-<ul>
-<% @projects.each do |project| %>
+<% first_row = true %>
+
+<ul class="projects-list">
+<% @projects.each_with_index do |project, index| %>
+  <% if index % 3 == 0 %>
+    <% unless first_row %>
+      </ul>
+    <% end %>
+    
+    <ul class="row">
+    <% first_row = false %>
+  <% end %>
   <li>
-    <%= link_to project.title, project_url(project.id) %>
+    <a class="project-link" href="<%= workspace_project_url(project.id) %>">
+      <div class="project-show">
+        <span class="title">
+          <%= project.title %>
+        </span>
+      </div>
+    </a>
   </li>
+<% end %>
+<% unless @projects.empty? %>
+  </ul>
 <% end %>
 </ul>
