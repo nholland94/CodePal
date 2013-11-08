@@ -54,8 +54,10 @@ class ProjectsController < ApplicationController
   end
 
   def workspace
-    # create projectfiles instance variables
-
     render :workspace
+  end
+
+  def workspace_session
+    render :workspace_session 
   end
 end

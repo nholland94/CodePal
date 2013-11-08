@@ -1,0 +1,19 @@
+<div class="workspace">
+  <div id="data" data-project-id="<%= params[:id] %>"></div>
+
+  <%= render "editor", direction: "left", type: "html", options: ["html", "haml"] %>
+
+  <%= render "editor", direction: "right", type: "css", options: ["css", "sass"] %>
+
+  <div class="divider">
+    <div class="selections">
+      <button type="button">Submit</button>
+      <input type="checkbox" id="autorun" checked>Auto Submit?
+    </div>
+  </div>
+
+  <iframe src="javascript:false;" name="code-render" scrolling="true">
+  </iframe>
+</div>
+
+

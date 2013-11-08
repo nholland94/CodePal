@@ -6,12 +6,15 @@
   noConnectionSetup = ->
     return null
 
-  start = Workspace.start = (useConnection) ->
+  start = Workspace.start = (useConnection, useSession) ->
     CodePal.Editors.start()
     
     if useConnection
-      CodePal.Connection.start()
+      CodePal.Connection.start(useSession)
     else
       noConnectionSetup()
+
+    if useSession
+      CodePal.Session.start()
 
 )(this)

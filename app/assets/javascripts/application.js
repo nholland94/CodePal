@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jQueryRotate
 //= require underscore
+//= require socket.io
 //= require ace
 //= require theme-monokai
 //= require mode-html

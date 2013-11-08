@@ -9,6 +9,7 @@ gem 'faker'
 gem 'figaro'
 gem 'jquery-rails'
 gem 'sprockets'
+gem 'socket.io-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
