@@ -4,12 +4,14 @@
   Editors = CodePal.Editors = (CodePal.Editors || {})
 
   escapeStyleEndTag = (str) ->
-    # remove any cases of </style> so there can be no script injections
-    return str
+    # remove any cases of </style>
+    escapedString = str.replace(/<\/style>/ig,"")
+    return escapedString
 
   escapeScriptTag = (str) ->
     # remove any cases of <script> or </script>
-    return str
+    escapedString = str.replace(/<\/?script>/ig,"")
+    return escapedString
 
   isEnabled = Editors.isEnabled = (str) ->
     return $('#' + str + '-container').find('.editor-checkbox').is(':checked')
@@ -32,6 +34,7 @@
  
   start = Editors.start = ->
     htmlBox = Editors.htmlBox = ace.edit("html-box")
+    htmlBox.$el = $("#html-box")
     htmlBox.setTheme("ace/theme/monokai")
     htmlBox.getSession().setMode("ace/mode/html")
     htmlBox.setShowPrintMargin(false)
@@ -40,6 +43,7 @@
     htmlBox.getSession().setUseWrapMode(true)
 
     cssBox = Editors.cssBox = ace.edit("css-box")
+    cssBox.$el = $("#css-box")
     cssBox.setTheme("ace/theme/monokai")
     cssBox.getSession().setMode("ace/mode/css")
     cssBox.setShowPrintMargin(false)

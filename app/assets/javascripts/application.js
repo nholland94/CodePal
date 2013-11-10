@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jQueryRotate
+//= require jquery.hotkeys
 //= require underscore
 //= require socket.io
 //= require ace
