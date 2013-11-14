@@ -13,6 +13,10 @@
     escapedString = str.replace(/<\/?script>/ig,"")
     return escapedString
 
+  escapeJavascript = (str) ->
+    escapedString = str.replace(/<\/script>/ig,"")
+    return escapedString
+
   isEnabled = Editors.isEnabled = (str) ->
     return $('#' + str + '-container').find('.editor-checkbox').is(':checked')
 
@@ -31,6 +35,45 @@
       $("iframe").contents().find("body").html(htmlString)
     else
       $("iframe").contents().find("body").html("")
+
+    if isEnabled('js')
+      # jquery really doesn't like script tags
+      # so I am implementing a workaround with no jquery
+
+      # first, get the iframe with jquery and index it
+      # this turns it into a regular DOM element
+      iframe = $("iframe")[0]
+
+      # different browsers give different methods for iframes
+      if iframe.contentDocument
+        doc = iframe.contentDocument
+      else if iframe.contentWindow
+        doc = iframe.contentWindow.document
+      else if iframe.document
+        doc = iframe.document
+
+      # this should never happen
+      throw "Document not initlialized" if doc == null
+
+      doc.open()
+      jqueryTag = doc.createElement('script')
+      jqueryTag.type = 'text/javascript'
+      jqueryTag.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
+      doc.appendChild(jqueryTag)
+      script = doc.createElement('script')
+      script.type = 'text/javascript'
+      script.text = Editors.jsBox.getValue()
+      doc.appendChild(script)
+      doc.close()
+
+      ###
+      jsString = Editors.jsBox.getValue()
+      jsString = "<scr" + "ipt>" + jsString + "</scr" + "ipt>"
+      jsString = escapeJavascript(jsString)
+      $("iframe").contents().find("head").append(jsString)
+      ###
+    else
+      $("iframe").contents().find("head script").remove()
  
   start = Editors.start = ->
     htmlBox = Editors.htmlBox = ace.edit("html-box")
@@ -51,6 +94,15 @@
     cssBox.setBehavioursEnabled(true)
     cssBox.getSession().setUseWrapMode(true)
 
+    jsBox = Editors.jsBox = ace.edit("js-box")
+    jsBox.$el = $("#js-box")
+    jsBox.setTheme("ace/theme/monokai")
+    jsBox.getSession().setMode("ace/mode/javascript")
+    jsBox.setShowPrintMargin(false)
+    jsBox.setHighlightActiveLine(true)
+    jsBox.setBehavioursEnabled(true)
+    jsBox.getSession().setUseWrapMode(true)
+
     $("button").click ->
       renderOutput()
       
@@ -63,6 +115,7 @@
 
     htmlBox.getSession().on("change", checkAutoFill)
     cssBox.getSession().on("change", checkAutoFill)
+    jsBox.getSession().on("change", checkAutoFill)
 
     Editors.OptionsMenu.start()
 

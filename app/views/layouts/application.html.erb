@@ -5,9 +5,11 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<div class="container">
+<body class="off">
+<div class="fadein scaleInv anim_1 container">
+<div class="fadein scaleInv anim_2">
 <%= render "layouts/navbar" %>
+</div>
 
 <% flash.each do |category| %>
   <% category.each do |message| %>

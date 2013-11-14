@@ -1,7 +1,9 @@
 nav {
   height: 50px;
   width: 100%;
-  background: black;
+  /* background: black; */
+  background-image: url('denim.png');
+  background-repeat: repeat;
   border-top: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;

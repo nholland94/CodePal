@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
   has_many :members, through: :project_memberships, source: :user
   
   after_create do
-    ['html', 'css'].each do |type|
+    ['html', 'css', 'js'].each do |type|
       ProjectFile.create!(file_type: type, body: "", project_id: self.id)
     end
   end

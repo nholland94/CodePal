@@ -21,4 +21,8 @@ module SessionHelper
   def logged_in?
     !!self.current_user
   end
+
+  def require_logged_in!
+    redirect_to login_url unless logged_in?
+  end
 end

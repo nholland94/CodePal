@@ -1,4 +1,9 @@
 class ProjectsController < ApplicationController
+  include ProjectsHelper
+
+  before_filter :require_logged_in!, only: [:new, :create, :edit, :update, :destroy, :workspace_session]
+  before_filter :require_creator!, only: [:edit, :update, :destroy]
+
   def index
     @projects = Project.all
 

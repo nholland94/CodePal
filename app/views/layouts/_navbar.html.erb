@@ -8,7 +8,7 @@
     </li>
     <% if logged_in? %>
       <li>
-        <%= button_to "My Projects", user_url(current_user_id), method: "get" %>
+        <%= button_to "My Projects", user_url(current_user.id), method: "get" %>
       </li>
     <% end %>
   </ul> 

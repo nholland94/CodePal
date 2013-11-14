@@ -1,9 +1,10 @@
+<div class="workspace-container">
 <div class="workspace">
   <div id="data" data-project-id="<%= params[:id] %>"></div>
 
-  <%= render "editor", direction: "left", type: "html", options: ["html", "haml"] %>
-
-  <%= render "editor", direction: "right", type: "css", options: ["css", "sass"] %>
+  <%= render "editor", direction: "left", type: "html", options: ["html", "haml"], anim: 3 %>
+  <%= render "editor", direction: "left", type: "css", options: ["css", "sass"], anim: 4 %>
+  <%= render "editor", direction: "right", type: "js", options: ["javascript", "coffeescript"], anim: 5 %>
 
   <div class="divider">
     <div class="selections">
@@ -15,5 +16,4 @@
   <iframe src="javascript:false;" name="code-render" scrolling="true">
   </iframe>
 </div>
-
-
+</div>

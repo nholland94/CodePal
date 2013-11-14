@@ -10,17 +10,26 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require pace
 //= require jquery
 //= require jquery_ujs
 //= require jQueryRotate
 //= require jquery.hotkeys
 //= require underscore
+//= require yummi-loader
 //= require socket.io
 //= require ace
 //= require theme-monokai
 //= require mode-html
+//= require worker-css
+//= require mode-javascript
+//= require worker-javascript
 //= require underscore
 //= require backbone
 //= require code_pal
 //= require_tree ./workspace
 //= require_tree .
+
+$(window).load(function() {
+  $('body').toggleClass('on off');
+});

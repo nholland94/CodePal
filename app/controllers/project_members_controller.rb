@@ -1,4 +1,9 @@
 class ProjectMembersController < ApplicationController
+  include ProjectsHelper
+
+  before_filter :require_logged_in!, except: [:index]
+  before_filter :require_creator!, except: [:index]
+
   def index
     @members = Project.find(params[:id]).all_members
     

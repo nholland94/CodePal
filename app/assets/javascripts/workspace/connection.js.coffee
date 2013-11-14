@@ -13,12 +13,13 @@
       success: (data, textStatus, xhr) ->
         CodePal.Editors.htmlBox.setValue(data[0].body, -1)
         CodePal.Editors.cssBox.setValue(data[1].body, -1)
+        CodePal.Editors.jsBox.setValue(data[2].body, -1)
         CodePal.Editors.renderOutput()
     callback()
    
   setupSaveButton = Connection.setupSaveButton = ->
     # add save to navbar
-    saveButton = $('<button class="workspace-save" type="button">Save</button>')
+    saveButton = $('<input class="workspace-save" type="submit" value="Save">')
 
     CodePal.Navbar.addOption(saveButton)
 
@@ -28,6 +29,7 @@
           files:
             html: CodePal.Editors.htmlBox.getValue()
             css: CodePal.Editors.cssBox.getValue()
+            js: CodePal.Editors.jsBox.getValue()
         dataType: 'json'
         url: '/api/projects/' + getProjectId() + '/project_files/save'
         type: 'post'

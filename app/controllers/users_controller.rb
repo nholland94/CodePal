@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :require_logged_in!, only: [:edit, :update, :destroy]
+  before_filter :require_self, only: [:edit, :update, :destroy]
+
   def index
     @users = User.all
 
