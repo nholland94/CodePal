@@ -1,14 +1,14 @@
-<form action="<%= url %>" method="post">
+<form action="<%= url %>" method="post" class="create-project">
   <% if edit %>
   <input type="hidden" name="_method" value="PUT">
   <% end %>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <label for="project-title">Title:</label><br>
-  <input type="text" name="project[title]" value="<%= @project.title %>" id="project-title" placeholder="title"><br>
+  <input type="text" name="project[title]" value="<%= @project.title %>" id="project-title" placeholder="title"><br><br>
 
   <label for="project-description">Description:</label><br>
-  <textarea cols=50 rows=10 name="project[description]" id="project-description" placeholder="description"><%= @project.description %></textarea><br>
+  <textarea cols=50 rows=10 name="project[description]" id="project-description" placeholder="description"><%= @project.description %></textarea><br><br>
 
   <input type="submit" value="<%= button_text %>">
 </form>

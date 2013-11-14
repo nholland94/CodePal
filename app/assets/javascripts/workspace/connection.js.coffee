@@ -19,9 +19,14 @@
    
   setupSaveButton = Connection.setupSaveButton = ->
     # add save to navbar
-    saveButton = $('<input class="workspace-save" type="submit" value="Save">')
+    # saveButton = $('<a class="workspace-save"><img src="/assets/save.png"></a>')
+    # saveButton = $('<button></button>')
+    saveButton = $('<a class="workspace-save" title="Save"></a>')
 
     CodePal.Navbar.addOption(saveButton)
+
+    # saveButton.html('<img src="/assets/home.png">')
+    saveButton.html('<img src="/assets/save.png">')
 
     saveButton.click ->
       $.ajax

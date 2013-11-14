@@ -27,9 +27,25 @@ nav ul.right {
 nav ul li {
   display: inline-block;
   height: 100%;
-  margin-top: 7px;
-  margin-left: 1em;
-  margin-right: 1em;
+}
+
+nav ul li a {
+  display: inline-block;
+  height: 45px;
+  width: 100px;
+  padding-top: 8px;
+  background: rgba(255, 255, 255, 0);
+}
+
+nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+ul li a img {
+  height: 25px;
+  width; 25px;
+  margin-left: 37px;
 }
 
 nav ul li input {

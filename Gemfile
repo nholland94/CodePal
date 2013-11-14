@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'faker'
 gem 'figaro'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'sprockets'
 gem 'socket.io-rails'
 

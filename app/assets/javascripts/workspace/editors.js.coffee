@@ -3,17 +3,17 @@
 
   Editors = CodePal.Editors = (CodePal.Editors || {})
 
-  escapeStyleEndTag = (str) ->
+  escapeStyleEndTag = Editors.escapeStyleEndTag = (str) ->
     # remove any cases of </style>
     escapedString = str.replace(/<\/style>/ig,"")
     return escapedString
 
-  escapeScriptTag = (str) ->
+  escapeScriptTag = Editors.escapeScriptTag = (str) ->
     # remove any cases of <script> or </script>
     escapedString = str.replace(/<\/?script>/ig,"")
     return escapedString
 
-  escapeJavascript = (str) ->
+  escapeJavascript = Editors.escapeJavascript = (str) ->
     escapedString = str.replace(/<\/script>/ig,"")
     return escapedString
 
@@ -36,12 +36,13 @@
     else
       $("iframe").contents().find("body").html("")
 
-    if isEnabled('js')
+    if isEnabled('js') && false
       # jquery really doesn't like script tags
       # so I am implementing a workaround with no jquery
 
       # first, get the iframe with jquery and index it
       # this turns it into a regular DOM element
+
       iframe = $("iframe")[0]
 
       # different browsers give different methods for iframes
@@ -56,10 +57,12 @@
       throw "Document not initlialized" if doc == null
 
       doc.open()
+      ###
       jqueryTag = doc.createElement('script')
       jqueryTag.type = 'text/javascript'
       jqueryTag.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
-      doc.appendChild(jqueryTag)
+      doc.head.appendChild(jqueryTag)
+      ###
       script = doc.createElement('script')
       script.type = 'text/javascript'
       script.text = Editors.jsBox.getValue()

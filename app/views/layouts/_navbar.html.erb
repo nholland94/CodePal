@@ -1,32 +1,53 @@
 <nav>
   <ul class="left">
     <li>
-      <%= button_to "Home", root_url, method: "get" %>
+      <a href="<%= root_url %>" title="Home Page">
+        <%= image_tag "home.png" %>
+      </a>
+      <%#= button_to "Home", root_url, method: "get" %>
     </li>
     <li>
-      <%= button_to "New Project", new_project_url, method: "get" %>
+      <a href="<%= new_project_url %>" title="Create Project">
+        <%= image_tag "new.png" %>
+      </a>
+      <%#= button_to "New Project", new_project_url, method: "get" %>
     </li>
     <% if logged_in? %>
       <li>
-        <%= button_to "My Projects", user_url(current_user.id), method: "get" %>
+        <a href="<%= user_url(current_user.id) %>" title="My Projects">
+          <%= image_tag "archive.png" %>
+        </a>
+        <%#= button_to "My Projects", user_url(current_user.id), method: "get" %>
       </li>
     <% end %>
   </ul> 
   <ul class="right">
   <% if logged_in? %>
       <li>
-        <%= button_to current_user.username, user_url(current_user.id), method: "get" %>
+        <a href="<%= user_url(current_user.id) %>" title="My Page">
+          <%= image_tag "info.png" %>
+        </a>
+        <%#= button_to current_user.username, user_url(current_user.id), method: "get" %>
       </li>
       <li>
-        <%= button_to "Logout", logout_url , method: "delete" %>
+        <a href="<%= logout_url %>" title="Logout">
+          <%= image_tag "logout.png" %>
+        </a>
+        <%#= button_to "Logout", logout_url , method: "delete" %>
       </li>
-  <% else %>
+  <% else %> 
       <li>
-        <%= button_to "Sign Up", new_user_url , method: "get" %>
-      </li>
-      <li>
-        <%= button_to "Login", login_url , method: "get" %>
+        <a href="<%= login_url %>" title="Login/Signup">
+          <%= image_tag "key.png" %>
+        </a>
+        <%#= button_to "Login", login_url , method: "get" %>
       </li>
   <% end %>
   </ul>
 </nav>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $(document).tooltip();
+});
+</script>

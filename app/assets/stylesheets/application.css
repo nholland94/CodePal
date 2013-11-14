@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require normalize
+ *= require jquery.ui.all
  *= require yummi-loader
  *= require pace_spinner
  *= require_tree .
@@ -74,4 +75,8 @@ div.container {
   bottom: 0;
   right: 0;
   left: 0;
+}
+
+.basic-header {
+  margin-left: 20px;
 }

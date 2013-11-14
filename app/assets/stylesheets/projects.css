@@ -6,16 +6,18 @@ ul.projects-list {
 ul.projects-list ul.row {
   list-style-type: none;
   padding: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ul.projects-list ul.row li {
   display: inline-block;
   height: 100px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 25px;
+  margin-right: 25px;
   margin-top: 25px;
   margin-bottom: 25px;
-  width: 13.1%;
+  width: 200px;
 }
 
 a.project-link {
@@ -24,13 +26,24 @@ a.project-link {
   width: 100%;
 }
 
-div.project-show {
-  height: 100%;
-  width: 100%;
+.project-show {
   background-color: black;
+  -moz-transform: scale(0.25, 0.25); 
+  -webkit-transform: scale(0.25, 0.25); 
+  -o-transform: scale(0.25, 0.25);
+  -ms-transform: scale(0.25, 0.25);
+  transform: scale(0.25, 0.25); 
+  -moz-transform-origin: top left;
+  -webkit-transform-origin: top left;
+  -o-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  border: solid #ccc 10px;
+  height: 400%;
+  width: 400%; 
 }
 
-div.project-show:hover {
+.project-show:hover {
   background-color: #555;
 }
 
