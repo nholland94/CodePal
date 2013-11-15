@@ -8,12 +8,30 @@
 
   <div class="divider">
     <div class="selections">
-      <button type="button">Submit</button>
-      <input type="checkbox" id="autorun" checked>Auto Submit?
+      <table border="0">
+        <tr>
+          <td>
+            <button type="button">Submit</button>&nbsp;
+          </td>
+          <td nowrap>
+            &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="autorun" checked>Auto Submit?&nbsp;&nbsp;&nbsp;&nbsp;
+          </td>
+          <td nowrap>
+            <a href="<%= project_url(params[:id]) %>" target="_blank">
+              <button type="button">Open in new window</button>
+            </a>
+          </td>
+        </td>
+        <!--<form action="<%#= project_url(params[:id]) %>" method="get">
+          <input type="submit" value="Open in new window">
+        <form>-->
+        <tr>
+      </table>
     </div>
   </div>
-
-  <iframe src="javascript:false;" name="code-render" scrolling="true">
-  </iframe>
+  <div id="reloader">
+    <iframe src="javascript:false;" name="code-render" scrolling="true">
+    </iframe>
+  </div>
 </div>
 </div>

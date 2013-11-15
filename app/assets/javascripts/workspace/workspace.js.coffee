@@ -16,5 +16,7 @@
 
     if useSession
       CodePal.Session.start()
+    else
+      CodePal.Connection.setupSessionButton()
 
 )(this)

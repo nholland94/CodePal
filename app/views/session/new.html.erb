@@ -1,3 +1,4 @@
+<h1 class="basic-header">Log In</h1><br>
 <form action="<%= login_url %>" method="post">
   <label for="login-username">Username:</label><br>
   <input type="text" name="user[username]" id="login-username" placeholder="username"><br>
@@ -7,3 +8,5 @@
 
   <input type="submit" value="Login">
 </form>
+
+<a href="<%= new_user_url %>">Don't have an account? Sign up here!</a>

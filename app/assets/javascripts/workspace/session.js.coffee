@@ -6,14 +6,28 @@
   version = Session.version = 0
 
   editorFromString = (str) ->
-    return if str == "html" then CodePal.Editors.htmlBox else CodePal.Editors.cssBox
+    if str == "html"
+      return CodePal.Editors.htmlBox
+    else if str == "css"
+      return CodePal.Editors.cssBox
+    else if str == "js"
+      return CodePal.Editors.jsBox
+
+  stringFromEditor = (editor) ->
+    if editor == CodePal.Editors.htmlBox
+      return "html"
+    else if editor == CodePal.Editors.cssBox
+      return "css"
+    else if editor == CodePal.Editors.jsBox
+      return "js"
 
   setupSession = (socket) ->
-    editors = [CodePal.Editors.htmlBox, CodePal.Editors.cssBox]
+    editors = [CodePal.Editors.htmlBox, CodePal.Editors.cssBox, CodePal.Editors.jsBox]
 
     socket.on(
       'editorUpdate'
       (data) ->
+        console.log(data)
         
         editor = editorFromString(data.editor)
 
@@ -30,7 +44,7 @@
         
         editor.moveCursorToPosition(position)
 
-        Session.version = data.version
+        # Session.version = data.version
     )
 
     socket.on(
@@ -55,39 +69,10 @@
       editor.on(
         'change'
         (e) ->
+          ###
           if !editor.setByAPI
             range = editor.getSelectionRange()
-
-            ###
-            if range.start.row < range.end.row && false # to not execute this code for now
-              rows = editor.getValue().split("\n")
-
-              if rows[range.start.row].length > range.start.column - 1
-                if e.data.range.end.row == range.start.row
-                  console.log('removeMultipleLines')
-                  socket.emit(
-                    'editorUpdate'
-                    {
-                      contents:
-                        action: 'removeMultipleLines'
-                        range: range
-                        text: ""
-                      editor: if editor == CodePal.Editors.htmlBox then "html" else "css"
-                    }
-                  )
-              else
-                if e.data.range.start.row == range.start.row
-                  console.log('removeMultipleFlatLines')
-                  socket.emit(
-                    'editorUpdate'
-                    contents:
-                      action: 'removeMultipleFlatLines'
-                      range: range
-                      text: ""
-                    editor: if editor == CodePal.Editors.htmlBox then "html" else "css"
-                  )
-            else
-            ###
+           
             console.log(e.data.action)
             socket.emit(
               'editorUpdate'
@@ -97,18 +82,16 @@
                 editor: if editor == CodePal.Editors.htmlBox then "html" else "css"
               }
             )
-          ###
+            ###
+ 
           # old method
           if !editor.setByAPI
             socket.emit(
               'editorUpdate'
               {
                 contents: editor.getValue()
-                editor: if editor == CodePal.Editors.htmlBox then "html" else "css"
-              }
+                editor: stringFromEditor(editor)              }
             )
-          #
-          ###
       )
 
       editor.$el.bind(
@@ -120,7 +103,7 @@
           socket.emit(
             'takeControl'
             {
-              editor: if editor == CodePal.Edtiors.htmlBox then "html" else "css"
+              editor: stringFromeEditor(editor)
             }
           )
           return false
@@ -144,6 +127,7 @@
         else if expectingValues
           CodePal.Editors.htmlBox.setValue(data.html, -1)
           CodePal.Editors.cssBox.setValue(data.css, -1)
+          CodePal.Editors.jsBox.setValue(data.js, -1)
           CodePal.Editors.renderOutput()
           expectingValues = false
           Session.version = data.version
@@ -160,6 +144,7 @@
             {
               html: CodePal.Editors.htmlBox.getValue()
               css: CodePal.Editors.cssBox.getValue()
+              js: CodePal.Editors.jsBox.getValue()
               version: Session.version
             }
           )

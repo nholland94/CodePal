@@ -10,8 +10,29 @@
 
     html = CodePal.Editors.escapeScriptTag(html)
     $(iframe).contents().find("body").html(html)
+   
+    iframe = $('iframe')[0]
 
-    # do some bullshit with javascript
+    if iframe.contentDocument
+      doc = iframe.contentDocument
+    else if iframe.contentWindow
+      doc = iframe.contentWindow.document
+    else if iframe.document
+      doc = iframe.document
+
+    throw "Document not initialized" if doc == null
+    
+    head = doc.children[0].children[0]
+
+    jqueryTag = doc.createElement('scipt')
+    jqueryTag.type = 'text/javascript'
+    jqueryTag.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
+    head.appendChild(jqueryTag)
+
+    script = doc.createElement('script')
+    script.type = 'text/javascript'
+    script.text = CodePal.Editors.escapeJavascript(js)
+    head.appendChild(script)
 
   start = Index.start = ->
     root.paceOptions =

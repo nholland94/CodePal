@@ -17,6 +17,13 @@
         CodePal.Editors.renderOutput()
     callback()
    
+  setupSessionButton = Connection.setupSessionButton = ->
+    joinButton = $('<a href="workspace/session" class="workspace-join" title="Join a live session"></a>')
+
+    CodePal.Navbar.addOption(joinButton)
+
+    joinButton.html('<img src="/assets/pair.png">')
+
   setupSaveButton = Connection.setupSaveButton = ->
     # add save to navbar
     # saveButton = $('<a class="workspace-save"><img src="/assets/save.png"></a>')
@@ -43,7 +50,6 @@
         error: (xhr, textStatus, errorThrown) ->
           CodePal.Lib.sendAlert("failed to save", "error")
 
-
   start = Connection.start = (getInitial)  ->
     # fill code boxes with the project file data
     # for now, I assume they come in order
@@ -53,5 +59,4 @@
         setupSaveButton()
     else
       setupSaveButton()
-          
 )(this)

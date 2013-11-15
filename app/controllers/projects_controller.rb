@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     @project.creator_id = current_user.id
 
     if @project.save
-      redirect_to project_url(@project.id)
+      redirect_to workspace_project_url(@project.id)
     else
       add_flash(:errors, @project.errors.full_messages)
       redirect_to new_project_url
@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
-    render :show
+    render :show, layout: false
   end
 
   def edit

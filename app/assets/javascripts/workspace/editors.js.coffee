@@ -21,6 +21,8 @@
     return $('#' + str + '-container').find('.editor-checkbox').is(':checked')
 
   renderOutput = Editors.renderOutput  = ->
+    # $('#reloader').html('<iframe src="javascript:false;" name="code-render" scrolling="true" style="width: 100%; height: 100%; background-color: white;"></iframe>')
+
     iframe = $('iframe')[0]
 
     # different browsers give different methods for iframes
@@ -66,7 +68,7 @@
 
       script = doc.createElement('script')
       script.type = 'text/javascript'
-      script.text = Editors.jsBox.getValue()
+      script.text = escapeJavascript(Editors.jsBox.getValue())
       head.appendChild(script)
      
       ###
