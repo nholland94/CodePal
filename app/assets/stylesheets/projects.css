@@ -24,6 +24,12 @@ a.project-link {
   display: block;
   height: 100%;
   width: 100%;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0);
+}
+
+a.project-link:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .project-show {
@@ -41,6 +47,8 @@ a.project-link {
   border: solid #ccc 10px;
   height: 400%;
   width: 400%; 
+  pointer-events: none;
+  z-index: 3;
 }
 
 .project-show:hover {
