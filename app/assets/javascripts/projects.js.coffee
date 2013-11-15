@@ -45,6 +45,23 @@
         url: '/api/projects/' + $(iframe).data("project-id") + '/project_files'
         type: 'get'
         success: (data, textStatus, xhr) ->
+          html = null
+          css = null
+          js = null
+
+          _(data).each (boxData) ->
+            if boxData.file_type == "html"
+              html = boxData.body
+            else if boxData.file_type == "css"
+              css = boxData.body
+            else if boxData.file_type == "js"
+              js = boxData.body
+            else
+              throw "Could not find where the file goes"
+
+          if html == null || css == null || js == null
+            throw "Did not process all files"
+ 
           fillFrame(iframe, data[0].body, data[1].body, data[2].body)
         error:
           fillFrame(iframe, "error", "", "")

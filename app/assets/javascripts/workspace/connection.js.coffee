@@ -11,9 +11,15 @@
       url: '/api/projects/' + getProjectId() + '/project_files'
       type: 'get'
       success: (data, textStatus, xhr) ->
-        CodePal.Editors.htmlBox.setValue(data[0].body, -1)
-        CodePal.Editors.cssBox.setValue(data[1].body, -1)
-        CodePal.Editors.jsBox.setValue(data[2].body, -1)
+        _(data).each (boxData) ->
+          if boxData.file_type == "html"
+            CodePal.Editors.htmlBox.setValue(boxData.body, -1)
+          else if boxData.file_type == "css"
+            CodePal.Editors.cssBox.setValue(boxData.body, -1)
+          else if boxData.file_type == "js"
+            CodePal.Editors.jsBox.setValue(boxData.body, -1)
+          else
+            throw "Could not find where the file goes"
         CodePal.Editors.renderOutput()
     callback()
    
